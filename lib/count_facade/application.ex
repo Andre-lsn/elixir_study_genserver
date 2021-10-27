@@ -8,7 +8,10 @@ defmodule CountFacade.Application do
   @impl true
   def start(_type, _args) do
     children = [
-     {Core.Count, 0}
+      %{
+        id: Core.Count,
+        start: {Core.Count, :start_link, [0]}
+      }
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
